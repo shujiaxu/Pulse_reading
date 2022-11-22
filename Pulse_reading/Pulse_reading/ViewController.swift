@@ -44,6 +44,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     @IBAction func sta(_ sender: Any) {
         if (BLEisConnected == true) {
             status.text = ("Connected")
+            
         }
     }
     
@@ -53,7 +54,56 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         }
     }
     
+    
+    
+    
+    func graphLineChart(dataArray: [Int]){
+           // Make plot size have width and height both equal to width of screen
+           plot.frame = CGRect(x: 0, y: 0,
+                                   width: self.view.frame.size.width,
+                                   height: self.view.frame.size.width / 2)
 
+           // Make plot center to be horizontally centered, but
+           // offset towards the top of the screen
+           plot.center.x = self.view.center.x
+           plot.center.y = self.view.center.y - 240
+           
+           // Settings when chart has no data
+           plot.noDataText = "No data available."
+           plot.noDataTextColor = UIColor.black
+           
+           // Initialize Array that will eventually be displayed on the graph.
+           var entries = [ChartDataEntry]()
+           
+           // For every element in given dataset
+           // Set the X and Y coordinates in a data chart entry
+           // and add to the entries list
+           for i in 0..<dataArray.count {
+               let value = ChartDataEntry(x: Double(i), y: Double(dataArray[i]))
+               entries.append(value)
+           }
+
+           // Use the entries object and a label string to make a LineChartDataSet object
+           let dataSet = LineChartDataSet(entries: entries, label: "Line Chart")
+           
+           // Customize graph settings to your liking
+           dataSet.colors = ChartColorTemplates.joyful()
+
+           // Make object that will be added to the chart
+           // and set it to the variable in the Storyboard
+           let data = LineChartData(dataSet: dataSet)
+           plot.data = data
+
+           // Add settings for the chartBox
+           plot.chartDescription?.text = "Pi Values"
+           
+           // Animations
+           plot.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .linear)
+       }
+       
+
+    
+    
     // This function is called before the storyboard view is loaded onto the screen.
     // Runs only once.
     override func viewDidLoad() {
@@ -283,7 +333,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
 
 
         /* MARK: SECTION 3 - PERFORM ACTIONS WITH THE RECEIVED VALUE HERE */
-
+        graphLineChart(dataArray: <#T##[Int]#>)
+        
 
 
 
