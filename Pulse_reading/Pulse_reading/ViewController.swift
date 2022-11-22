@@ -30,14 +30,29 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     
 
     /* MARK: SECTION 1 - INITIALIZE YOUR OWN VARIABLES HERE */
-
-
-
+    
+    @IBOutlet weak var plot: LineChartView!
+    
+    
+    @IBOutlet weak var status: UILabel!
+    
+    var BLEisConnected = false
+    
+    
     /* MARK: SECTION 2 - INITIALIZE YOUR OWN FUNCTIONS HERE */
-
-
-
-
+    
+    @IBAction func sta(_ sender: Any) {
+        if (BLEisConnected == true) {
+            status.text = ("Connected")
+        }
+    }
+    
+    @IBAction func sto(_ sender: Any) {
+        if (BLEisConnected == false) {
+            status.text = ("Disconnected")
+        }
+    }
+    
 
     // This function is called before the storyboard view is loaded onto the screen.
     // Runs only once.
