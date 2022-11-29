@@ -42,24 +42,14 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     /* MARK: SECTION 2 - INITIALIZE YOUR OWN FUNCTIONS HERE */
     
     @IBAction func sta(_ button: UIButton) {
-        if (BLEisConnected == true) {
-            status.text = ("Connected")
-        }
-        else if (BLEisConnected == false) {
-            status.text = ("Disconnected")
-        }
         startScan()
     }
     
     @IBAction func sto(_ button: UIButton) {
-        if (BLEisConnected == false) {
-            status.text = ("Disconnected")
-        }
-        else if (BLEisConnected == true) {
-            status.text =  ("Connected")
+        if (curPeripheral != nil){
+            centralManager?.cancelPeripheralConnection(curPeripheral!)
         }
     }
-    
     
     func graphLineChart(dataArray: [Int]){
            // Make plot size have width and height both equal to width of screen
@@ -99,10 +89,10 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
            plot.data = data
 
            // Add settings for the chartBox
-        plot.chartDescription.text = "time"//"Pi Values"
+           plot.chartDescription.text = "time"//"Pi Values"
            
            // Animations
-           plot.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .linear)
+//           plot.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .linear)
        }
        
 
@@ -239,6 +229,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("Disconnected")
         BLEisConnected = false
+        status.text = "Disconnected"
     }
     
     // Called when the correct peripheral's services are discovered
@@ -263,7 +254,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             if service.uuid == BLE_Service_UUID {
                 
                 BLEisConnected = true
-                
+                status.text = "Connected"
                 // Search for the characteristics of the service
                 peripheral.discoverCharacteristics(nil, for: service)
             }
