@@ -16,40 +16,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rgw-Px-Ang">
-                                <rect key="frame" x="164" y="441" width="62" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rgw-Px-Ang">
+                                <rect key="frame" x="164" y="404.66666666666669" width="62" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Start"/>
                                 <connections>
                                     <action selector="sta:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hRx-BE-KbT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cox-JJ-phs">
-                                <rect key="frame" x="165" y="535" width="60" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cox-JJ-phs">
+                                <rect key="frame" x="165" y="539.66666666666663" width="60" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Stop"/>
                                 <connections>
                                     <action selector="sto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bOf-Jv-I3x"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVu-XV-LXT">
-                                <rect key="frame" x="174" y="629" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVu-XV-LXT">
+                                <rect key="frame" x="174" y="624.66666666666663" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cf4-gp-1b8" customClass="LineChartView" customModule="Charts" colorLabel="IBBuiltInLabel-Red">
-                                <rect key="frame" x="75" y="109" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cf4-gp-1b8" customClass="LineChartView" customModule="Charts" colorLabel="IBBuiltInLabel-Red">
+                                <rect key="frame" x="50" y="147" width="290" height="157.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="AVu-XV-LXT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0LM-BF-NM7"/>
+                            <constraint firstItem="cf4-gp-1b8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0bY-el-tOz"/>
+                            <constraint firstItem="AVu-XV-LXT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1uh-7p-r04"/>
                             <constraint firstItem="cox-JJ-phs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2RT-tc-tRq"/>
-                            <constraint firstItem="cox-JJ-phs" firstAttribute="top" secondItem="Rgw-Px-Ang" secondAttribute="bottom" constant="100" id="Jvh-uV-Eec"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cf4-gp-1b8" secondAttribute="trailing" constant="50" id="A70-0t-CKx"/>
+                            <constraint firstItem="Rgw-Px-Ang" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="BKM-oF-b4A"/>
+                            <constraint firstItem="Rgw-Px-Ang" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="C24-WG-L0l"/>
+                            <constraint firstItem="Rgw-Px-Ang" firstAttribute="top" secondItem="cf4-gp-1b8" secondAttribute="bottom" constant="100" id="J69-br-TlA"/>
+                            <constraint firstItem="cox-JJ-phs" firstAttribute="top" secondItem="Rgw-Px-Ang" secondAttribute="bottom" constant="100" id="PjV-db-uUL"/>
+                            <constraint firstItem="cox-JJ-phs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TFq-GS-YMa"/>
+                            <constraint firstItem="cf4-gp-1b8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TNE-EX-ryU"/>
+                            <constraint firstItem="cf4-gp-1b8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="aC6-4Q-H9H"/>
+                            <constraint firstItem="AVu-XV-LXT" firstAttribute="top" secondItem="cox-JJ-phs" secondAttribute="bottom" constant="50" id="dG4-Pn-Rmx"/>
+                            <constraint firstItem="cf4-gp-1b8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="oVy-Sm-bRf"/>
                             <constraint firstItem="Rgw-Px-Ang" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xSN-Jp-75l"/>
                         </constraints>
                     </view>

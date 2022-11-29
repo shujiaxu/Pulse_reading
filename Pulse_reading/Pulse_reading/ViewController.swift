@@ -33,28 +33,32 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     @IBOutlet weak var plot: LineChartView!
     
-    
     @IBOutlet weak var status: UILabel!
     
     var BLEisConnected = false
+    var array = [Int]()
     
     
     /* MARK: SECTION 2 - INITIALIZE YOUR OWN FUNCTIONS HERE */
     
-    @IBAction func sta(_ sender: Any) {
+    @IBAction func sta(_ button: UIButton) {
         if (BLEisConnected == true) {
             status.text = ("Connected")
-            
         }
+        else if (BLEisConnected == false) {
+            status.text = ("Disconnected")
+        }
+        startScan()
     }
     
-    @IBAction func sto(_ sender: Any) {
+    @IBAction func sto(_ button: UIButton) {
         if (BLEisConnected == false) {
             status.text = ("Disconnected")
         }
+        else if (BLEisConnected == true) {
+            status.text =  ("Connected")
+        }
     }
-    
-    
     
     
     func graphLineChart(dataArray: [Int]){
@@ -95,7 +99,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
            plot.data = data
 
            // Add settings for the chartBox
-           plot.chartDescription?.text = "Pi Values"
+        plot.chartDescription.text = "time"//"Pi Values"
            
            // Animations
            plot.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .linear)
@@ -234,6 +238,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     // Called when the central manager disconnects from the peripheral
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("Disconnected")
+        BLEisConnected = false
     }
     
     // Called when the correct peripheral's services are discovered
@@ -256,6 +261,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             
             // If service's UUID matches with our specified one...
             if service.uuid == BLE_Service_UUID {
+                
+                BLEisConnected = true
                 
                 // Search for the characteristics of the service
                 peripheral.discoverCharacteristics(nil, for: service)
@@ -329,13 +336,17 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
                                       encoding: String.Encoding.utf8.rawValue)
         else { return }
         
+        // receivedString = "1313,31331"
+        // receivedString.split()
         let myInt = (receivedString as NSString).integerValue
 
 
         /* MARK: SECTION 3 - PERFORM ACTIONS WITH THE RECEIVED VALUE HERE */
-        graphLineChart(dataArray: <#T##[Int]#>)
         
-
+        array.append(myInt)
+        
+        graphLineChart(dataArray: array)
+        
 
 
         NotificationCenter.default.post(name:NSNotification.Name(rawValue: "Notify"), object: self)

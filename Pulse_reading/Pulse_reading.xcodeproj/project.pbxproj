@@ -48,7 +48,6 @@
 				5666D3EB079524385FE537CE /* Pods-Pulse_reading.debug.xcconfig */,
 				F4BF4A700615EC8EDC3575DD /* Pods-Pulse_reading.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -360,6 +359,8 @@
 				DEVELOPMENT_TEAM = 56P2V494SS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pulse_reading/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -389,6 +390,8 @@
 				DEVELOPMENT_TEAM = 56P2V494SS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pulse_reading/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
